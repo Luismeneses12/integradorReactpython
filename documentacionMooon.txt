@@ -1,0 +1,124 @@
+¡Excelente iniciativa\! Un proyecto con un propósito tan importante merece una base sólida. Actuando como Scrum Master, mi objetivo es tomar tu visión y convertirla en una estructura clara y organizada que sirva como mapa para el desarrollo.
+
+Aquí tienes la documentación inicial del proyecto **"Moon"**, diseñada para alinear al equipo y definir el alcance.
+
+-----
+
+### \#\# Documento de Visión y Alcance del Proyecto: Moon
+
+**Versión:** 1.0
+**Fecha:** 11 de Octubre de 2025
+
+### 1\. 🌕 Visión del Proyecto
+
+Crear un puente seguro y accesible entre personas que enfrentan desafíos emocionales, especialmente aquellos derivados de traumas de infancia, y especialistas en psicología calificados. **Moon** será un espacio de primer contacto, apoyo y gestión, facilitando una atención oportuna y adecuada para promover el bienestar mental.
+
+### 2\. 🎯 Objetivos Principales
+
+  * **Identificar:** Ofrecer una herramienta de autoevaluación inicial para que los usuarios puedan expresar su estado actual de forma estructurada.
+  * **Conectar:** Asignar y conectar a los usuarios con el especialista más adecuado según sus necesidades.
+  * **Apoyar:** Brindar un espacio comunitario (foro) para el apoyo mutuo entre usuarios en un entorno seguro.
+  * **Gestionar:** Proporcionar a los especialistas y al administrador las herramientas para gestionar perfiles, calendarios y citas de manera eficiente.
+
+### 3\. 👥 Roles de Usuario
+
+Se definen tres roles principales en la plataforma:
+
+| Rol | Descripción y Permisos |
+| :--- | :--- |
+| **Usuario / Paciente** | Es la persona que busca ayuda. Puede: <br> • Registrarse y crear un perfil. <br> • Personalizar su perfil. <br> • Completar el formulario de encuesta inicial. <br> • Participar en el foro (crear hilos y comentar). <br> • Ver perfiles de especialistas asignados. <br> • Agendar, ver y cancelar sus citas. |
+| **Especialista** | Es el profesional de la psicología. Puede: <br> • Ser agregado a la plataforma solo por un Administrador. <br> • Completar y gestionar su perfil profesional (especialidad, estudios, etc.). <br> • Gestionar su calendario de disponibilidad. <br> • Ver la información (no sensible) y encuestas de los pacientes que tiene asignados. <br> • Aceptar o gestionar las citas. |
+| **Administrador** | Es el rol con control total sobre la plataforma. Puede: <br> • Crear, ver, editar y eliminar perfiles de Especialistas. <br> • Validar las credenciales de los especialistas. <br> • Ver todos los usuarios registrados. <br> • Moderar el foro (eliminar contenido inapropiado). <br> • Asignar manualmente pacientes a especialistas si es necesario. |
+
+-----
+
+### 4\. 📋 Funcionalidades Principales (Módulos)
+
+A continuación, se desglosan las funcionalidades clave del proyecto.
+
+#### Módulo 1: Gestión de Usuarios y Perfiles
+
+  * **Formulario de Registro:** Campos básicos como nombre, correo electrónico y contraseña.
+  * **Login:** Autenticación de usuarios.
+  * **Perfil de Usuario:** Espacio personalizable donde el usuario puede añadir un avatar, un nombre de usuario y una breve descripción si lo desea. Esto ayuda a crear una sensación de familiaridad y control.
+
+#### Módulo 2: Proceso de Admisión (Encuesta Inicial)
+
+  * Un formulario breve y amigable que se presenta después del registro.
+  * **Campos clave:**
+      * Edad.
+      * Selector de estado de ánimo: "¿Cómo te sientes hoy?" (ej: con emojis o una escala del 1 al 5).
+      * Pregunta de sí/no: "¿Has recibido ayuda psicológica antes?".
+      * Pregunta de sí/no: "¿Tomas algún medicamento recetado para tu salud emocional?".
+      * Consentimiento: "¿Te gustaría recibir mensajes de apoyo mientras se te asigna una cita?".
+
+#### Módulo 3: Foro Comunitario
+
+  * Un espacio de interacción seguro basado únicamente en **texto plano**.
+  * Los usuarios pueden crear "Publicaciones" o "Hilos" con una pregunta o un pensamiento.
+  * Otros usuarios pueden añadir "Respuestas" a esas publicaciones.
+  * El administrador tiene permisos de moderación.
+
+#### Módulo 4: Gestión de Especialistas
+
+  * **Panel de Administrador:** Interfaz exclusiva para que el administrador agregue nuevos especialistas a la plataforma.
+  * **Perfil del Especialista:** Cada especialista debe completar su perfil con información crucial:
+      * Nombre completo y foto profesional.
+      * **Especialidad(es):** (Terapia Cognitivo-Conductual, Psicoanálisis, Terapia de Trauma, etc.). Esto es clave para la asignación.
+      * **Estudios y Certificaciones:** Campo para detallar su formación académica y licencias.
+
+#### Módulo 5: Sistema de Citas y Calendario
+
+  * **Calendario del Especialista:** Cada especialista puede marcar sus horas y días de disponibilidad.
+  * **Tabla de Citas:** Una vista donde se registran todas las citas agendadas. Contiene información como: ID de Paciente, ID de Especialista, fecha, hora y estado (confirmada, cancelada, completada).
+  * **Flujo de Agendamiento:** El usuario, una vez asignado a un especialista, podrá ver su calendario y solicitar una cita en los horarios disponibles.
+
+-----
+
+### 5\. 🏗️ Estructura de Datos y Relaciones de Tablas
+
+Esta es una propuesta inicial para la base de datos.
+
+**Tablas Principales:**
+
+  * `Usuarios`: (id, nombre, email, password, rol)
+  * `Perfiles`: (id, usuario\_id, avatar, descripcion)
+  * `Especialistas`: (id, usuario\_id, especialidad, estudios)
+  * `Encuestas`: (id, usuario\_id, edad, estado\_animo, ayuda\_previa, medicamentos, etc.)
+  * `Citas`: (id, usuario\_id, especialista\_id, fecha\_hora, estado)
+  * `Calendario_Disponibilidad`: (id, especialista\_id, dia, hora\_inicio, hora\_fin)
+  * `Foro_Publicaciones`: (id, usuario\_id, titulo, contenido, fecha\_creacion)
+  * `Foro_Respuestas`: (id, publicacion\_id, usuario\_id, contenido, fecha\_creacion)
+
+**Relaciones Clave:**
+
+> Como mencionaste, las relaciones son cruciales. Aquí están clarificadas:
+>
+>   * **Usuarios y Especialistas (Muchos a Muchos, a través de Citas):**
+>
+>       * Un `Usuario` puede tener citas con varios `Especialistas` a lo largo del tiempo (aunque quizás solo con uno a la vez).
+>       * Un `Especialista` atiende a muchos `Usuarios`.
+>       * La tabla `Citas` conecta a ambos, resolviendo la relación.
+>
+>   * **Usuario y Citas (Uno a Muchos):**
+>
+>       * Un `Usuario` puede tener muchas `Citas`.
+>       * Cada `Cita` pertenece a un solo `Usuario`.
+>
+>   * **Especialista y Citas (Uno a Muchos):**
+>
+>       * Un `Especialista` puede tener muchas `Citas`.
+>       * Cada `Cita` es atendida por un solo `Especialista`.
+
+### 6\. 💡 Ideas Adicionales y Próximos Pasos
+
+  * **Producto Mínimo Viable (MVP):** Para empezar, podríamos enfocarnos en: Registro de usuarios, encuesta, registro de especialistas (por el admin) y un sistema de citas simple. El foro podría ser una segunda fase.
+  * **Sistema de Notificaciones:** Enviar recordatorios por correo electrónico a usuarios y especialistas sobre sus próximas citas.
+  * **Recursos Educativos:** Una sección en la app con artículos y videos sobre salud mental, seleccionados por los especialistas.
+  * **Mensajería Segura:** En una fase más avanzada, un chat encriptado uno a uno entre el paciente y su especialista asignado.
+
+Este documento sirve como el "mapa del tesoro" para el proyecto **Moon**. Define qué vamos a construir, para quién y cómo se conectan las diferentes partes.
+
+-----
+
+¿Te parece bien esta estructura inicial? Podemos profundizar en cualquiera de estos módulos para detallar más las funcionalidades o definir las "Historias de Usuario" para el equipo de desarrollo. Por ejemplo, podríamos empezar a detallar el flujo exacto del registro y la encuesta.
