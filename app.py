@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from flask import Flask,request,jsonify ,session
+=======
+from flask import Flask,request,jsonify , session
+>>>>>>> bba5915 (feat se crea la parte de login y la ruta de  de los compnenste pagina inical y   usuario)
 from flask_cors import CORS
 from flask_sqlalchemy  import  SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -67,6 +71,9 @@ def login():
 
 #crud cliente 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bba5915 (feat se crea la parte de login y la ruta de  de los compnenste pagina inical y   usuario)
 @app.route('/perfil/<int:id>', methods=['GET'])
 def get_usuario(id):
     user = User.query.get(id)
@@ -79,6 +86,32 @@ def get_usuario(id):
         'edad': user.edad
     }
     return jsonify(user_data), 200
+<<<<<<< HEAD
+=======
+
+# http://127.0.0.1:5000/perfil/id
+@app.route('/perfil/<int:id>', methods=['PUT'])
+def put_usuario(id):
+    if 'id ' not in session:
+        return jsonify({'message': 'id es requerido'}), 400
+    data = request.get_json()
+    user = User.query.get(id)
+    
+    if not user:
+        return jsonify({'message': 'Usuario no encontrado'}), 404
+    
+    user.nombre = data.get('nombre', user.nombre)
+    user.correo = data.get('correo', user.correo)
+    user.edad = data.get('edad', user.edad)
+    db.session.commit()
+    return jsonify({'message': 'Usuario actualizado exitosamente'}), 200
+    
+@app.route("/logout", methods=['POST'])
+def logout():
+    session.pop('id', None)
+    return jsonify({'message': 'Cierre de sesión exitoso'}), 200     
+    
+>>>>>>> bba5915 (feat se crea la parte de login y la ruta de  de los compnenste pagina inical y   usuario)
 
 # http://127.0.0.1:5000/perfil/id
 @app.route('/perfil/<int:id>', methods=['PUT'])
@@ -107,5 +140,6 @@ def logout():
 
 >>>>>>> 3afd145 (feat se hace la parte de login para  y se va a direccionar)
     
+
 if __name__ == '__main__':
     app.run(debug=True)
