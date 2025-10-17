@@ -1,4 +1,4 @@
-from flask import Flask,request,jsonify
+from flask import Flask,request,jsonify , session
 from flask_cors import CORS
 from flask_sqlalchemy  import  SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -62,7 +62,43 @@ def login():
         return jsonify({'message': 'Correo o contraseña incorrectos'}), 401
 
 #crud cliente 
+@app.route('/perfil/<int:id>', methods=['GET'])
+def get_usuario(id):
+    user = User.query.get(id)
+    if not user:
+        return jsonify({'message': 'Usuario no encontrado'}), 404
+    
+    user_data = {        
+        'nombre': user.nombre,
+        'correo': user.correo,
+        'edad': user.edad
+    }
+    return jsonify(user_data), 200
+
+# http://127.0.0.1:5000/perfil/id
+@app.route('/perfil/<int:id>', methods=['PUT'])
+def put_usuario(id):
+    if 'id ' not in session:
+        return jsonify({'message': 'id es requerido'}), 400
+    data = request.get_json()
+    user = User.query.get(id)
+    
+    if not user:
+        return jsonify({'message': 'Usuario no encontrado'}), 404
+    
+    user.nombre = data.get('nombre', user.nombre)
+    user.correo = data.get('correo', user.correo)
+    user.edad = data.get('edad', user.edad)
+    db.session.commit()
+    return jsonify({'message': 'Usuario actualizado exitosamente'}), 200
+    
+@app.route("/logout", methods=['POST'])
+def logout():
+    session.pop('id', None)
+    return jsonify({'message': 'Cierre de sesión exitoso'}), 200     
+    
 
     
+
 if __name__ == '__main__':
     app.run(debug=True)

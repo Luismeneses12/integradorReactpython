@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom"
 import { useState } from "react"
+import Paginaprincipal from "./Paginaprincipal";
 
-export default function Login(){
+export default function Login({onLogin}){
   const [correo, setcorreo] = useState("")
   const [contraseña, setcontraseña] = useState("")
+  const navigate = useNavigate();
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -18,18 +21,27 @@ export default function Login(){
         })
   })
   const data= await res.json()
-  console.log(data)
-  alert(data.message)
+  if (res.ok){
+    onLogin(data.user);
+    navigate('/Paginaprincipal');
+
+    alert(data.message || 'Inicio de sesión exitoso' );
   }
+  else{
+    alert("eroor" +  data || 'Error al iniciar sesión' );
+  }
+  }
+  
   
   return(
         <>
-        <form>
+        <form  onSubmit={handleSubmit}>
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">
       Email address
     </label>
     <input
+    value={correo} onChange={(e)=>setcorreo(e.target.value)}
       type="email"
       className="form-control"
       id="exampleInputEmail1"
@@ -44,6 +56,7 @@ export default function Login(){
       Password
     </label>
     <input
+    value={contraseña} onChange={(e)=>setcontraseña(e.target.value)}
       type="password"
       className="form-control"
       id="exampleInputPassword1"
@@ -56,7 +69,7 @@ export default function Login(){
     </label>
   </div>
   <button type="submit" className="btn btn-primary">
-    Submit
+    Ingresar
   </button>
 </form>
 
