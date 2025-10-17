@@ -1,5 +1,28 @@
+import React from "react";
+import { Link, NavLink } from "react-router-dom"
+import { useState } from "react"
+
 export default function Login(){
-    return(
+  const [correo, setcorreo] = useState("")
+  const [contraseña, setcontraseña] = useState("")
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault()
+
+    const res = await fetch('http://127.0.0.1:5000/login',
+      {method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          correo,
+          contraseña
+        })
+  })
+  const data= await res.json()
+  console.log(data)
+  alert(data.message)
+  }
+  
+  return(
         <>
         <form>
   <div className="mb-3">

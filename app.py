@@ -44,7 +44,25 @@ def registro():
     db.session.add(nuevo_usuario)
     db.session.commit()
     return jsonify({'message':'usuario registrado Exitosamente '}), 201
+
+#http://127.0.0.1:5000/login  
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    correo = data.get("correo")
+    contraseña = data.get("contraseña")
     
+    user = User.query.filter_by(correo=correo).first()
+    
+    if user and bcrypt.check_password_hash(user.contraseña, contraseña):
+        return jsonify({'message': 'Inicio de sesión exitoso',
+                        'user':{'id':user.id,
+                                'nombre':user.correo}}), 200
+    else:
+        return jsonify({'message': 'Correo o contraseña incorrectos'}), 401
+
+#crud cliente 
+
     
 if __name__ == '__main__':
     app.run(debug=True)
