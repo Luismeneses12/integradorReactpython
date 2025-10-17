@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom"
 import { useState } from "react"
@@ -9,6 +10,14 @@ export default function Login({onLogin}){
     const [correo, setcorreo] = useState("")
   const [contraseña, setcontraseña] = useState("")
   const navigate = useNavigate();
+=======
+import { Link, NavLink } from "react-router-dom"
+import { useState } from "react"
+
+export default function Login(){
+  const [correo, setcorreo] = useState("")
+  const [contraseña, setcontraseña] = useState("")
+>>>>>>> 3afd145 (feat se hace la parte de login para  y se va a direccionar)
 
   const handleSubmit = async (e)=>{
     e.preventDefault()
@@ -22,6 +31,7 @@ export default function Login({onLogin}){
         })
   })
   const data= await res.json()
+<<<<<<< HEAD
   if (res.ok){
     onLogin(data.user);
     navigate('/Paginaprincipal');
@@ -31,6 +41,10 @@ export default function Login({onLogin}){
   else{
     alert("eroor" +  data || 'Error al iniciar sesión' );
   }
+=======
+  console.log(data)
+  alert(data.message)
+>>>>>>> 3afd145 (feat se hace la parte de login para  y se va a direccionar)
   }
   
   return(

@@ -44,7 +44,12 @@ def registro():
     db.session.add(nuevo_usuario)
     db.session.commit()
     return jsonify({'message':'usuario registrado Exitosamente '}), 201
+<<<<<<< HEAD
  #http://127.0.0.1:5000/login  
+=======
+
+#http://127.0.0.1:5000/login  
+>>>>>>> 3afd145 (feat se hace la parte de login para  y se va a direccionar)
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -61,6 +66,7 @@ def login():
         return jsonify({'message': 'Correo o contraseña incorrectos'}), 401
 
 #crud cliente 
+<<<<<<< HEAD
 @app.route('/perfil/<int:id>', methods=['GET'])
 def get_usuario(id):
     user = User.query.get(id)
@@ -97,6 +103,9 @@ def logout():
     return jsonify({'message': 'Cierre de sesión exitoso'}), 200     
        
  
+=======
+
+>>>>>>> 3afd145 (feat se hace la parte de login para  y se va a direccionar)
     
 if __name__ == '__main__':
     app.run(debug=True)
