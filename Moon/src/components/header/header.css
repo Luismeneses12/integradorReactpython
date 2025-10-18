@@ -1,0 +1,175 @@
+nav {
+  width: 100%;
+  background-color: var(--color-secundario);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(28, 35, 51, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* === MENÚ NORMAL === */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.nav-links a {
+  color: var(--color-fondo);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links li{
+    font-size: 1.2rem;
+    padding-top: 10px;
+}
+
+.nav-links li:hover {
+  color: var(--color-hover);
+  transform: translateY(-2px);
+}
+
+/* === BOTÓN HAMBURGUESA === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--color-texto);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Animación al abrir */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === BOTONES LOGIN / REGISTRO === */
+.auth-group {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.auth-btn {
+  background-color: var(--color-acento);
+  color: #fff !important;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.auth-btn:hover {
+  background-color: var(--color-hover);
+  transform: scale(1.05);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: var(--color-primario);
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.active {
+    max-height: 600px;
+    opacity: 1;
+    padding: 1rem 0;
+  }
+
+  .nav-links a {
+    text-align: center;
+    width: 100%;
+    padding: 1rem 0;
+    color: var(--color-texto);
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  .nav-links {
+        gap: 0.5rem; 
+    }
+  
+    .nav-links li{
+        padding: 5px 5px;
+    }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* 🔹 Login y Registro apilados y centrados */
+  .auth-group {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .auth-group a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .auth-btn {
+    display: block;
+    width: 80%;
+    margin: 0.4rem auto;
+    border-radius: 30px;
+  }
+
+  /* 🔹 Estilo alternativo para "Registrarse" */
+  .auth-btn:nth-of-type(2) {
+    background-color: transparent;
+    color: var(--color-acento) !important;
+    border: 2px solid var(--color-acento);
+  }
+
+  .auth-btn:nth-of-type(2):hover {
+    background-color: var(--color-acento);
+    color: #fff !important;
+  }
+}
