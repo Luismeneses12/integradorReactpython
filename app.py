@@ -1,4 +1,4 @@
-from flask import Flask,request,jsonify , session
+from flask import Flask,request,jsonify ,session
 from flask_cors import CORS
 from flask_sqlalchemy  import  SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -44,8 +44,7 @@ def registro():
     db.session.add(nuevo_usuario)
     db.session.commit()
     return jsonify({'message':'usuario registrado Exitosamente '}), 201
-
-#http://127.0.0.1:5000/login  
+ #http://127.0.0.1:5000/login  
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -96,9 +95,8 @@ def put_usuario(id):
 def logout():
     session.pop('id', None)
     return jsonify({'message': 'Cierre de sesión exitoso'}), 200     
+       
+ 
     
-
-    
-
 if __name__ == '__main__':
     app.run(debug=True)

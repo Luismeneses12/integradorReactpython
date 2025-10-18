@@ -1,0 +1,9 @@
+:root {
+  --color-primario: #1B2A41;     /* Azul noche profundo (para el nav y fondos oscuros) */
+  --color-secundario: #243B55;   /* Azul grisáceo elegante */
+  --color-acento: #FFB347;       /* Dorado suave, como la luz del farol */
+  --color-texto: #EAEAEA;        /* Blanco grisáceo */
+  --color-fondo: #F5F8FA;        /* Fondo claro general */
+  --color-hover: #FFD580;        /* Dorado claro para hover */
+  --color-borde: #2E4159;        /* Azul oscuro para separadores */
+}

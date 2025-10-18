@@ -4,8 +4,9 @@ import { Link, NavLink } from "react-router-dom"
 import { useState } from "react"
 import Paginaprincipal from "./Paginaprincipal";
 
+
 export default function Login({onLogin}){
-  const [correo, setcorreo] = useState("")
+    const [correo, setcorreo] = useState("")
   const [contraseña, setcontraseña] = useState("")
   const navigate = useNavigate();
 
@@ -32,10 +33,9 @@ export default function Login({onLogin}){
   }
   }
   
-  
   return(
         <>
-        <form  onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">
       Email address
@@ -69,7 +69,7 @@ export default function Login({onLogin}){
     </label>
   </div>
   <button type="submit" className="btn btn-primary">
-    Ingresar
+    Submit
   </button>
 </form>
 
