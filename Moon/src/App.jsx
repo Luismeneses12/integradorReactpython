@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import Home from "./pages/home/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
@@ -19,7 +19,7 @@ const [user, setUser] = useState(null);
   return (
     <>
       
-        <Header />
+        <Home/>
          <Routes>
            <Route path="/login"
             element={ user ? <Paginaprincipal user={user}/>:<Login onLogin={setUser} />} />
@@ -33,7 +33,7 @@ const [user, setUser] = useState(null);
            <Route path="/registro"
             element={<Registro />} />
          </Routes>      
-       <Main />
+       
       <Footer />
     </>
   );

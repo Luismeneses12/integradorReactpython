@@ -70,7 +70,7 @@ export default function Login({ onLogin }) {
           </label>
         </div>
         <button type="submit" className="btn btn-primary">
-          Ingresar
+          <p><Link to="/paginaPricipal">Ingresar</Link></p>
         </button>
       </form>
     </>
