@@ -5,4 +5,6 @@ export let enrutador = [
         path: '/',
         element: <Home />
     },
+    {},{},{}
+
 ]

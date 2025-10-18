@@ -1,0 +1,23 @@
+[33mcommit 130e79fe6a454a8d515d63c39f1bda9f013bb351[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: luis alfredo meneses <luis.0495@hotmail.com>
+Date:   Sat Oct 18 06:56:07 2025 -0500
+
+    feat
+
+[33mcommit bba591568f38820df1b531a29d4f5121fd369d86[m[33m ([m[1;32mluisBacken[m[33m)[m
+Author: lmeneses <luis.0495@hotmail.com>
+Date:   Fri Oct 17 14:52:52 2025 -0500
+
+    feat se crea la parte de login y la ruta de  de los compnenste pagina inical y   usuario
+
+[33mcommit 3afd145ede99dd6f39ff6528a54962805ff05c25[m
+Author: lmeneses <luis.0495@hotmail.com>
+Date:   Thu Oct 16 23:47:40 2025 -0500
+
+    feat se hace la parte de login para  y se va a direccionar
+
+[33mcommit 1c0f5c82b5ba58c04e0f88cf8cca6617cd856e08[m
+Author: lmeneses <luis.0495@hotmail.com>
+Date:   Thu Oct 16 14:11:03 2025 -0500
+
+    feat se crea la parte pricnipal del proyecto se va a dadtando la  los componesnte y sus rutas
