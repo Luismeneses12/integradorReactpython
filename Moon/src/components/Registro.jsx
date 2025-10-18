@@ -165,7 +165,7 @@ export default function Registro(){
     >
       ¿Ya tienes cuenta?{" "}
       {/* aca va la parte para redirecinar la  la iunofrm acion */}         
-       <NavLink     style={{ color: "#9ab3ff", textDecoration: "none" }} to={"/login"} >Inicio  sesión</NavLink>
+       <NavLink style={{ color: "#9ab3ff", textDecoration: "none" }} to={"/login"} >Inicio  sesión</NavLink>
     </p>
    
   </form>
